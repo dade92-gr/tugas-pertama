@@ -1,62 +1,73 @@
-'use client';
-
 export default async function ProductPage({ params }) {
   const { id } = params;
 
   let content;
+  let backgroundColor = "#f9f9f9";
+  let textColor = "#000"; // default warna teks
 
   if (id === "ohm") {
     content = (
       <>
-        <h2>Simulasi Hukum Ohm</h2>
-        <p>Hukum Ohm: V = I × R</p>
-        <label>
-          Tegangan (V): <input type="number" id="volt" />
-        </label>
-        <br />
-        <label>
-          Hambatan (R): <input type="number" id="res" />
-        </label>
-        <br />
-        <button
-          onClick={() => {
-            const V = parseFloat(document.getElementById("volt").value);
-            const R = parseFloat(document.getElementById("res").value);
-            const I = V / R;
-            alert("Kuat Arus (I) = " + I.toFixed(2) + " A");
-          }}
-        >
-          Hitung Arus
-        </button>
+        <h1>Hukum Ohm</h1>
+        <p>Simulasi hubungan antara tegangan, arus, dan hambatan.</p>
       </>
     );
-  } else if (id === "gerak-lurus") {
-    content = (
-      <>
-        <h2>Simulasi Gerak Lurus</h2>
-        <p>Halaman ini masih dalam pengembangan.</p>
-      </>
-    );
+    backgroundColor = "#fff3cd"; // kuning soft
+    textColor = "#795548"; // coklat
   } else if (id === "cermin") {
     content = (
       <>
-        <h2>Simulasi Cermin Datar</h2>
-        <p>Halaman ini masih dalam pengembangan.</p>
+        <h1>Simulasi Cermin</h1>
+        <p>Bayangan pada cermin cembung dan cekung.</p>
       </>
     );
+    backgroundColor = "#e3f2fd"; // biru muda enak
+    textColor = "#1565c0"; // biru tua
+  } else if (id === "gerak-lurus") {
+    content = (
+      <>
+        <h1>Gerak Lurus</h1>
+        <p>Simulasi tentang kecepatan dan perpindahan benda.</p>
+      </>
+    );
+    backgroundColor = "#f1f8e9"; // hijau sangat muda
+    textColor = "#33691e"; // hijau tua
   } else {
     content = (
       <>
-        <h2>Produk Tidak Ditemukan</h2>
-        <p>Tidak ada simulasi dengan nama: {id}</p>
+        <h1>Produk Tidak Ditemukan</h1>
+        <p>Pastikan nama produk benar, seperti 'ohm', 'cermin', atau 'gerak-lurus'.</p>
       </>
     );
+    backgroundColor = "#ffebee"; // merah muda soft
+    textColor = "#c62828"; // merah tua
   }
 
   return (
-    <div>
-      <h1>Halaman Produk: {id}</h1>
-      <div style={{ marginTop: 20 }}>{content}</div>
-    </div>
+    <main style={{
+      backgroundColor,
+      color: textColor,
+      height: "100vh",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      textAlign: "center",
+      fontFamily: "Arial, sans-serif",
+      padding: "1rem"
+    }}>
+      <h1 style={{
+        fontSize: "3rem",
+        fontWeight: "bold",
+        marginBottom: "1rem"
+      }}>
+        {content.props.children[0].props.children}
+      </h1>
+      <p style={{
+        fontSize: "1.5rem"
+      }}>
+        {content.props.children[1].props.children}
+      </p>
+    </main>
   );
 }
