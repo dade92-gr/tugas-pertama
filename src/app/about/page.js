@@ -9,7 +9,7 @@ export default function AboutPage() {
     }}>
       <h1 style={{ fontSize: "2.5rem", color: "#cc5200" }}>Tentang Saya</h1>
       <p>
-        Halo, saya <strong>Dade Sugiono</strong>. Saya adalah seorang guru di SMK Muhammadiyah Kandanghaur
+        Halo, saya <strong>Dade Sugiono</strong>. Saya adalah seorang guru di SMKN 1 Terisi
         yang memiliki minat besar dalam sains, teknologi, dan pendidikan berbasis eksperimen.
       </p>
       <p>
