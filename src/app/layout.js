@@ -21,24 +21,25 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* Navigasi */}
-        <nav style={{
-          backgroundColor: "#333",
-          padding: "1rem",
-          display: "flex",
-          gap: "1rem",
-        }}>
-          <Link href="/" style={{ color: "white", textDecoration: "none" }}>Beranda</Link>
-          <Link href="/about" style={{ color: "white", textDecoration: "none" }}>Tentang</Link>
-          <Link href="/profile" style={{ color: "white", textDecoration: "none" }}>Profil</Link>
-          <Link href="/products/ohm" style={{ color: "white", textDecoration: "none" }}>Produk: Ohm</Link>
-          <Link href="/products/cermin" style={{ color: "white", textDecoration: "none" }}>Produk: Cermin</Link>
-          <Link href="/products/gerak-lurus" style={{ color: "white", textDecoration: "none" }}>Produk: Gerak Lurus</Link>
+        <nav className="navbar">
+          {navItems.map(({ href, label }) => (
+            <Link key={href} href={href} className="nav-link">
+              {label}
+            </Link>
+          ))}
         </nav>
-
-        {/* Isi Halaman */}
         <main>{children}</main>
       </body>
     </html>
   );
 }
+
+const navItems = [
+  { href: "/", label: "Beranda" },
+  { href: "/about", label: "Tentang" },
+  { href: "/profile", label: "Profil" },
+  { href: "/products", label: "Produk" },
+  { href: "/products/ohm", label: "Ohm" },
+  { href: "/products/cermin", label: "Cermin" },
+  { href: "/products/gerak-lurus", label: "Gerak Lurus" },
+];
